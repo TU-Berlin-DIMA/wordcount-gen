@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generator_prototype xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.dima.tu-berlin.de/myriad/prototype">
+
+  <!-- configurable parameters -->
+  <parameters>
+    <!-- naming convention {generator_name}.{parameter_name} -->
+    <parameter key="token.sequence.base_cardinality">200000000</parameter>
+  </parameters>
+
+  <!-- function configuration -->
+  <functions>
+    <function key='Pr[lexicon.gutenberg]' type='combined_probability[Enum]'>
+      <argument key='path' type='String' value='${%ENV.config-dir% + "/distributions/lexicon/gutenberg.distribution"}' />
+    </function>
+    <function key='Pr[lexicon.separator]' type='combined_probability[Enum]'>
+      <argument key='path' type='String' value='${%ENV.config-dir% + "/distributions/lexicon/separator.distribution"}' />
+    </function>
+  </functions>
+
+  <!-- enumeration types -->
+  <enum_sets>
+    <!-- example: demographics.* -->
+    <enum_set key='lexicon.gutenberg'>
+      <argument key='path' type='String' value='${%ENV.config-dir% + "/domains/lexicon/gutenberg.domain"}' />
+    </enum_set>
+    <enum_set key='lexicon.separator'>
+      <argument key='path' type='String' value='${%ENV.config-dir% + "/domains/lexicon/separator.domain"}' />
+    </enum_set>
+  </enum_sets>
+
+  <record_sequences>
+    <!-- example: customers -->
+    <random_sequence key="token">
+      <record_type>
+        <field name='value' type='Enum' enumref='lexicon.gutenberg' />
+        <field name='separator' type='Enum' enumref='lexicon.separator' />
+      </record_type>
+      <setter_chain>
+        <setter key='set_value' type='field_setter'>
+          <argument key='field' type='field_ref' ref='token:value' />
+          <argument key='value' type='random_value_provider'>
+            <argument key='probability' type='function_ref' ref='Pr[lexicon.gutenberg]' />
+          </argument>
+        </setter>
+        <setter key='set_separator' type='field_setter'>
+          <argument key='field' type='field_ref' ref='token:separator' />
+          <argument key='value' type='random_value_provider'>
+            <argument key='probability' type='function_ref' ref='Pr[lexicon.separator]' />
+          </argument>
+        </setter>
+      </setter_chain>
+      <cardinality_estimator type="linear_scale_estimator">
+        <argument key="base_cardinality" type="I64u" value="%token.sequence.base_cardinality%" />
+      </cardinality_estimator>
+      <sequence_iterator type="partitioned_iterator" />
+    </random_sequence>
+  </record_sequences>
+</generator_prototype>

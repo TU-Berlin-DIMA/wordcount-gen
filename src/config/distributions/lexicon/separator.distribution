@@ -1,0 +1,14 @@
+@numberofexactvals = 11
+@numberofbins = 0
+@nullprobability = 0.0
+p(X) = 0.780                     for X = { 0 } # " "
+p(X) = 0.010                     for X = { 1 } # ".\n"
+p(X) = 0.010                     for X = { 2 } # ".\n\n"
+p(X) = 0.080                     for X = { 3 } # ". "
+p(X) = 0.020                     for X = { 4 } # "! "
+p(X) = 0.020                     for X = { 5 } # "? "
+p(X) = 0.010                     for X = { 6 } # ", "
+p(X) = 0.010                     for X = { 7 } # "~ "
+p(X) = 0.040                     for X = { 8 } # "; "
+p(X) = 0.010                     for X = { 9 } # ": "
+p(X) = 0.010                     for X = { 10 } # " - "
