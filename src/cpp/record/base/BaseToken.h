@@ -47,12 +47,12 @@ public:
 
 protected:
 
-    // meta
-    const TokenMeta& _meta;
-
     // fields
     Enum _value;
     Enum _separator;
+
+    // meta
+    const TokenMeta& _meta;
 };
 
 inline void BaseToken::value(const Enum& v)

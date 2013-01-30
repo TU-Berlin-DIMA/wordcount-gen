@@ -4,13 +4,14 @@
   <!-- configurable parameters -->
   <parameters>
     <!-- naming convention {generator_name}.{parameter_name} -->
-    <parameter key="token.sequence.base_cardinality">200000000</parameter>
+    <parameter key="token.sequence.base_cardinality">190000000</parameter>
+    <parameter key="token.output-file">gutenberg.txt</parameter>
   </parameters>
 
   <!-- function configuration -->
   <functions>
     <function key='Pr[lexicon.gutenberg]' type='combined_probability[Enum]'>
-      <argument key='path' type='String' value='${%ENV.config-dir% + "/distributions/lexicon/gutenberg.distribution"}' />
+      <argument key='path' type='String' value='${%ENV.config-dir% + "/distributions/lexicon/gutenberg.en.distribution"}' />
     </function>
     <function key='Pr[lexicon.separator]' type='combined_probability[Enum]'>
       <argument key='path' type='String' value='${%ENV.config-dir% + "/distributions/lexicon/separator.distribution"}' />
@@ -21,7 +22,7 @@
   <enum_sets>
     <!-- example: demographics.* -->
     <enum_set key='lexicon.gutenberg'>
-      <argument key='path' type='String' value='${%ENV.config-dir% + "/domains/lexicon/gutenberg.domain"}' />
+      <argument key='path' type='String' value='${%ENV.config-dir% + "/domains/lexicon/gutenberg.en.domain"}' />
     </enum_set>
     <enum_set key='lexicon.separator'>
       <argument key='path' type='String' value='${%ENV.config-dir% + "/domains/lexicon/separator.domain"}' />

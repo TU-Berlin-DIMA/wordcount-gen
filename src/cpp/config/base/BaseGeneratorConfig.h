@@ -29,7 +29,7 @@ protected:
     virtual void configureFunctions()
     {
         // register prototype functions
-        function(new CombinedPrFunction<Enum>("Pr[lexicon.gutenberg]", static_cast<String>(parameter<String>("ENV.config-dir") + "/distributions/lexicon/gutenberg.distribution")));
+        function(new CombinedPrFunction<Enum>("Pr[lexicon.gutenberg]", static_cast<String>(parameter<String>("ENV.config-dir") + "/distributions/lexicon/gutenberg.en.distribution")));
         function(new CombinedPrFunction<Enum>("Pr[lexicon.separator]", static_cast<String>(parameter<String>("ENV.config-dir") + "/distributions/lexicon/separator.distribution")));
     }
 
@@ -37,7 +37,7 @@ protected:
     {
         // bind string sets to config members with the bindStringSet method
         enumSet(new MyriadEnumSet("lexicon.separator", static_cast<String>(parameter<String>("ENV.config-dir") + "/domains/lexicon/separator.domain")));
-        enumSet(new MyriadEnumSet("lexicon.gutenberg", static_cast<String>(parameter<String>("ENV.config-dir") + "/domains/lexicon/gutenberg.domain")));
+        enumSet(new MyriadEnumSet("lexicon.gutenberg", static_cast<String>(parameter<String>("ENV.config-dir") + "/domains/lexicon/gutenberg.en.domain")));
     }
 };
 
