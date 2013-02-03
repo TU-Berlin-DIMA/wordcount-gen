@@ -31,9 +31,9 @@ namespace Myriad {
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
 template<>
-inline void OutputTraits<WordCountGen::Token>::CollectorType::serialize(OutputTraits<WordCountGen::Token>::CollectorType::StreamType& out, const WordCountGen::Token& record)
+inline void AbstractOutputCollector<WordCountGen::Token>::serialize(std::stringstream& outputBuffer, const WordCountGen::Token& record)
 {
-    out << record.valueEnumValue() << record.separatorEnumValue();
+    outputBuffer << record.valueEnumValue() << record.separatorEnumValue();
 }
 
 } // namespace Myriad
