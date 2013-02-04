@@ -16,7 +16,6 @@ RM := rm
 -include vendor/myriad-toolkit/src/cpp/core/subdir.mk
 -include vendor/myriad-toolkit/src/cpp/config/subdir.mk
 -include vendor/myriad-toolkit/src/cpp/communication/subdir.mk
--include src/cpp/io/subdir.mk
 -include src/cpp/generator/base/subdir.mk
 -include src/cpp/generator/subdir.mk
 -include src/cpp/core/subdir.mk
