@@ -109,13 +109,13 @@ struct RecordTraits<WordCountGen::Token>
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
 template<>
-inline void AbstractOutputCollector<WordCountGen::BaseToken>::serialize(std::stringstream& outputBuffer, const WordCountGen::BaseToken& record)
+inline void AbstractOutputCollector<WordCountGen::BaseToken>::serialize(std::ostream& out, const WordCountGen::BaseToken& record)
 {
-    write(outputBuffer, record.valueEnumValue(), false);
-    outputBuffer << '|';
-    write(outputBuffer, record.separatorEnumValue(), false);
-    outputBuffer << '|';
-    outputBuffer << '\n';
+    write(out, record.valueEnumValue(), false);
+    out << '|';
+    write(out, record.separatorEnumValue(), false);
+    out << '|';
+    out << '\n';
 }
 
 } // namespace Myriad
