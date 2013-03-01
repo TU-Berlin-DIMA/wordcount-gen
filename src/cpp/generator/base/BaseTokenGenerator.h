@@ -6,35 +6,33 @@
 #include "generator/RandomSequenceGenerator.h"
 #include "runtime/setter/TokenSetterChain.h"
 
-using namespace Myriad;
-
 namespace WordCountGen {
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // AbstractSequenceGenerator specialization (base class)
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
-class BaseTokenGenerator: public RandomSequenceGenerator<Token>
+class BaseTokenGenerator: public Myriad::RandomSequenceGenerator<Token>
 {
 public:
 
-    BaseTokenGenerator(const string& name, GeneratorConfig& config, NotificationCenter& notificationCenter) :
-        RandomSequenceGenerator<Token>(name, config, notificationCenter)
+    BaseTokenGenerator(const string& name, Myriad::GeneratorConfig& config, NotificationCenter& notificationCenter) :
+        Myriad::RandomSequenceGenerator<Token>(name, config, notificationCenter)
     {
     }
 
-    void prepare(Stage stage, const GeneratorPool& pool)
+    void prepare(Stage stage, const Myriad::GeneratorPool& pool)
     {
         // call generator implementation
-        RandomSequenceGenerator<Token>::prepare(stage, pool);
+        Myriad::RandomSequenceGenerator<Token>::prepare(stage, pool);
 
         if (stage.name() == name())
         {
-            registerTask(new PartitionedSequenceIteratorTask< Token > (*this, _config));
+            registerTask(new Myriad::PartitionedSequenceIteratorTask< Token > (*this, _config));
         }
     }
 
-    TokenSetterChain setterChain(BaseSetterChain::OperationMode opMode, RandomStream& random)
+    TokenSetterChain setterChain(Myriad::BaseSetterChain::OperationMode opMode, Myriad::RandomStream& random)
     {
         return TokenSetterChain(opMode, random, _config);
     }

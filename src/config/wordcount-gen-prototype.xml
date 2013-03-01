@@ -39,13 +39,13 @@
       <setter_chain>
         <setter key='set_value' type='field_setter'>
           <argument key='field' type='field_ref' ref='token:value' />
-          <argument key='value' type='random_value_provider'>
+          <argument key='value' type='random_value_provider[Enum]'>
             <argument key='probability' type='function_ref' ref='Pr[lexicon.gutenberg]' />
           </argument>
         </setter>
         <setter key='set_separator' type='field_setter'>
           <argument key='field' type='field_ref' ref='token:separator' />
-          <argument key='value' type='random_value_provider'>
+          <argument key='value' type='random_value_provider[Enum]'>
             <argument key='probability' type='function_ref' ref='Pr[lexicon.separator]' />
           </argument>
         </setter>

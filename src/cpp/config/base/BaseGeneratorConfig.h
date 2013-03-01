@@ -29,8 +29,8 @@ protected:
     virtual void configureFunctions()
     {
         // register prototype functions
-        function(new CombinedPrFunction<Enum>("Pr[lexicon.gutenberg]", static_cast<String>(parameter<String>("ENV.config-dir") + "/distributions/lexicon/gutenberg.en.distribution")));
-        function(new CombinedPrFunction<Enum>("Pr[lexicon.separator]", static_cast<String>(parameter<String>("ENV.config-dir") + "/distributions/lexicon/separator.distribution")));
+        function(new Myriad::CombinedPrFunction<Enum>("Pr[lexicon.gutenberg]", static_cast<String>(parameter<String>("ENV.config-dir") + "/distributions/lexicon/gutenberg.en.distribution")));
+        function(new Myriad::CombinedPrFunction<Enum>("Pr[lexicon.separator]", static_cast<String>(parameter<String>("ENV.config-dir") + "/distributions/lexicon/separator.distribution")));
     }
 
     virtual void configureSets()

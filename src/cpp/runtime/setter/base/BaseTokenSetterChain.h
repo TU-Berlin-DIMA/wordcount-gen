@@ -3,13 +3,12 @@
 #ifndef BASETOKENSETTERCHAIN_H_
 #define BASETOKENSETTERCHAIN_H_
 
+#include "config/GeneratorConfig.h"
 #include "runtime/setter/SetterChain.h"
 #include "record/Token.h"
 #include "record/TokenUtil.h"
 #include "runtime/provider/value/RandomValueProvider.h"
 #include "runtime/setter/FieldSetter.h"
-
-using namespace Myriad;
 
 namespace WordCountGen {
 
@@ -20,24 +19,24 @@ namespace WordCountGen {
 /**
  * SetterChain specialization for User.
  */
-class BaseTokenSetterChain : public SetterChain<Token>
+class BaseTokenSetterChain : public Myriad::SetterChain<Token>
 {
 public:
 
     // runtime component typedefs
     // runtime components for setter `set_value`
-    typedef RandomValueProvider< Enum, Token, CombinedPrFunction<Enum>, 0 > ValueProvider01Type;
-    typedef FieldSetter< Token, RecordTraits<Token>::VALUE, ValueProvider01Type > SetValueType;
+    typedef Myriad::RandomValueProvider< Enum, Token, Myriad::CombinedPrFunction<Enum>, 0 > ValueProvider01Type;
+    typedef Myriad::FieldSetter< Token, Myriad::RecordTraits<Token>::VALUE, ValueProvider01Type > SetValueType;
     // runtime components for setter `set_separator`
-    typedef RandomValueProvider< Enum, Token, CombinedPrFunction<Enum>, 0 > ValueProvider02Type;
-    typedef FieldSetter< Token, RecordTraits<Token>::SEPARATOR, ValueProvider02Type > SetSeparatorType;
+    typedef Myriad::RandomValueProvider< Enum, Token, Myriad::CombinedPrFunction<Enum>, 0 > ValueProvider02Type;
+    typedef Myriad::FieldSetter< Token, Myriad::RecordTraits<Token>::SEPARATOR, ValueProvider02Type > SetSeparatorType;
 
-    BaseTokenSetterChain(OperationMode& opMode, RandomStream& random, GeneratorConfig& config) :
-        SetterChain<Token>(opMode, random),
+    BaseTokenSetterChain(Myriad::BaseSetterChain::OperationMode& opMode, Myriad::RandomStream& random, Myriad::GeneratorConfig& config) :
+        Myriad::SetterChain<Token>(opMode, random),
         _sequenceCardinality(config.cardinality("token")),
-        _valueProvider01(config.function< CombinedPrFunction<Enum> >("Pr[lexicon.gutenberg]")),
+        _valueProvider01(config.function< Myriad::CombinedPrFunction<Enum> >("Pr[lexicon.gutenberg]")),
         _setValue(_valueProvider01),
-        _valueProvider02(config.function< CombinedPrFunction<Enum> >("Pr[lexicon.separator]")),
+        _valueProvider02(config.function< Myriad::CombinedPrFunction<Enum> >("Pr[lexicon.separator]")),
         _setSeparator(_valueProvider02),
         _logger(Logger::get("token.setter.chain"))
     {
@@ -64,9 +63,9 @@ public:
     /**
      * Predicate filter function.
      */
-    virtual Interval<I64u> filter(const EqualityPredicate<Token>& predicate)
+    virtual Myriad::Interval<I64u> filter(const Myriad::EqualityPredicate<Token>& predicate)
     {
-        Interval<I64u> result(0, _sequenceCardinality);
+        Myriad::Interval<I64u> result(0, _sequenceCardinality);
 
         // apply inverse setter chain
         _setValue.filterRange(predicate, result);

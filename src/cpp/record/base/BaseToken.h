@@ -3,10 +3,8 @@
 #ifndef BASETOKEN_H_
 #define BASETOKEN_H_
 
-#include "record/Record.h"
+#include "record/AbstractRecord.h"
 #include "record/TokenMeta.h"
-
-using namespace Myriad;
 
 namespace WordCountGen {
 
@@ -23,7 +21,7 @@ class TokenSetterChain;
 // base record type
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
-class BaseToken: public Record
+class BaseToken: public Myriad::AbstractRecord
 {
 public:
 
@@ -111,11 +109,6 @@ struct RecordTraits<WordCountGen::Token>
 template<>
 inline void AbstractOutputCollector<WordCountGen::BaseToken>::serialize(std::ostream& out, const WordCountGen::BaseToken& record)
 {
-    write(out, record.valueEnumValue(), false);
-    out << '|';
-    write(out, record.separatorEnumValue(), false);
-    out << '|';
-    out << '\n';
 }
 
 } // namespace Myriad

@@ -3,8 +3,6 @@
 
 #include "generator/base/BaseTokenGenerator.h"
 
-using namespace Myriad;
-
 namespace WordCountGen {
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
@@ -15,9 +13,9 @@ class TokenGenerator: public BaseTokenGenerator
 {
 public:
 
-    typedef RecordTraits<Token>::SetterChainType SetterChainType;
+    typedef Myriad::RecordTraits<Token>::SetterChainType SetterChainType;
 
-    TokenGenerator(const string& name, GeneratorConfig& config, NotificationCenter& notificationCenter) :
+    TokenGenerator(const string& name, Myriad::GeneratorConfig& config, NotificationCenter& notificationCenter) :
         BaseTokenGenerator(name, config, notificationCenter)
     {
     }

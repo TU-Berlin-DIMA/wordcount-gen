@@ -3,7 +3,7 @@
   
   <!-- a set of cloud environments -->
   <cloud_environments>
-    <cloud_env id="localhost" dgen="/home/alexander/etc/datagen/wordcount-gen">
+    <cloud_env id="localhost" dgen="/path/to/dgen/install/dir">
       <master>
         <host name="localhost" />
       </master>
@@ -17,17 +17,17 @@
   <dgen_configurations>
     <dgen_config id="localhost-x1" cloud="localhost">
       <nodes_per_host>1</nodes_per_host>
-      <output_base>/data/myriad/wordcount-gen</output_base>
+      <output_base>/path/to/data</output_base>
     </dgen_config>
     
     <dgen_config id="localhost-x2" cloud="localhost">
       <nodes_per_host>2</nodes_per_host>
-      <output_base>/data/myriad/wordcount-gen</output_base>
+      <output_base>/path/to/data</output_base>
     </dgen_config>
     
     <dgen_config id="localhost-x4" cloud="localhost">
       <nodes_per_host>4</nodes_per_host>
-      <output_base>/data/myriad/wordcount-gen</output_base>
+      <output_base>/path/to/data</output_base>
     </dgen_config>
   </dgen_configurations>
 </generator_frontend>

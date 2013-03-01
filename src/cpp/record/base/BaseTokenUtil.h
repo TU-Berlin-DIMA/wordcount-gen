@@ -16,8 +16,8 @@ template<>
 struct RecordFieldTraits<RecordTraits<WordCountGen::Token>::VALUE, WordCountGen::Token>
 {
     typedef Enum FieldType;
-    typedef MethodTraits<WordCountGen::Token, FieldType>::Setter FieldSetterType;
-    typedef MethodTraits<WordCountGen::Token, FieldType>::Getter FieldGetterType;
+    typedef MethodTraits<WordCountGen::Token, FieldType>::RefSetter FieldSetterType;
+    typedef MethodTraits<WordCountGen::Token, FieldType>::RefGetter FieldGetterType;
 
     static inline FieldSetterType setter()
     {
@@ -35,8 +35,8 @@ template<>
 struct RecordFieldTraits<RecordTraits<WordCountGen::Token>::SEPARATOR, WordCountGen::Token>
 {
     typedef Enum FieldType;
-    typedef MethodTraits<WordCountGen::Token, FieldType>::Setter FieldSetterType;
-    typedef MethodTraits<WordCountGen::Token, FieldType>::Getter FieldGetterType;
+    typedef MethodTraits<WordCountGen::Token, FieldType>::RefSetter FieldSetterType;
+    typedef MethodTraits<WordCountGen::Token, FieldType>::RefGetter FieldGetterType;
 
     static inline FieldSetterType setter()
     {

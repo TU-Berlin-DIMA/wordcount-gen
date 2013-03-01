@@ -3,20 +3,18 @@
 #ifndef BASETOKENMETA_H_
 #define BASETOKENMETA_H_
 
-#include "record/Record.h"
-
-using namespace Myriad;
+#include "record/AbstractRecord.h"
 
 namespace WordCountGen {
 
 // forward declarations
 class Token;
 
-class BaseTokenMeta : public RecordMeta<Token>
+class BaseTokenMeta : public Myriad::RecordMeta<Token>
 {
 public:
 
-    BaseTokenMeta(const EnumSetPool& enumSets) : 
+    BaseTokenMeta(const Myriad::EnumSetPool& enumSets) : 
         separator(enumSets.get("lexicon.separator").values()), value(enumSets.get("lexicon.gutenberg").values())
     {
     }
