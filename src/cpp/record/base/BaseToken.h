@@ -65,7 +65,14 @@ inline const Enum& BaseToken::value() const
 
 inline const String& BaseToken::valueEnumValue() const
 {
-    return _meta.value[_value];
+    if (_value == Myriad::nullValue<Enum>())
+    {
+        return Myriad::nullValue<String>();
+    }
+    else
+    {
+        return _meta.value[_value];
+    }
 }
 
 inline void BaseToken::separator(const Enum& v)
@@ -80,7 +87,14 @@ inline const Enum& BaseToken::separator() const
 
 inline const String& BaseToken::separatorEnumValue() const
 {
-    return _meta.separator[_separator];
+    if (_separator == Myriad::nullValue<Enum>())
+    {
+        return Myriad::nullValue<String>();
+    }
+    else
+    {
+        return _meta.separator[_separator];
+    }
 }
 
 } // namespace WordCountGen
